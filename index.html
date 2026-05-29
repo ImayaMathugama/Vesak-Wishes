@@ -28,6 +28,14 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+        .wish-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: none; /* Hidden until loaded */
+        }
         h1 { color: #fcd34d; margin-bottom: 5px; font-size: 24px; }
         .subtitle { color: #94a3b8; font-size: 14px; margin-bottom: 25px; }
         input {
@@ -63,7 +71,7 @@
 <body>
 
 <div class="card">
-    <h1>🪔 IT Dept Vesak Dansala</h1>
+    <h1>🪔 IT Department Vesak Dansala</h1>
     <div class="subtitle">Digital Wish Generation System</div>
     
     <div id="input-stage">
@@ -73,10 +81,10 @@
     </div>
 
     <div id="wish-box" class="wish-box">
-        <div class="greeting" id="user-name">Theruwan Saranai, Subhadra!</div>
-        <div class="message" id="wish-text">
-            May your code compile on the first run, your production pipelines stay green, and your mind find ultimate peace this Vesak season! 🌾✨
-        </div>
+        <img id="wish-img" src="" alt="Vesak Blessing" class="wish-image">
+        
+        <div class="greeting" id="user-name">Theruwan Saranai!</div>
+        <div class="message" id="wish-text">...</div>
         <button onclick="resetForm()" style="margin-top: 20px; background: transparent; color: #94a3b8; border: 1px solid #334155;">Try Another ID</button>
     </div>
 </div>
@@ -3544,33 +3552,50 @@
     };
 
     // 2. Add a few tech-themed Vesak wishes to randomize
-    const wishes = [
-        "May your code compile flawlessly on the first run, your production pipelines stay emerald green, and your life be filled with serene peace! 🪔✨",
-        "Wishing you a bug-free life and an overflow of happiness. May this Vesak season clear your mind's cache and refresh your spirit! 🌸",
-        "May the light of Vesak illuminate your career path, resolve all merge conflicts in your life, and bring immense peace to you and your family! 🌾"
-    ];
-
-    function generateWish() {
-        const idInput = document.getElementById('empId').value.trim().toUpperCase();
-        const errorMsg = document.getElementById('error-msg');
-        const inputStage = document.getElementById('input-stage');
-        const wishBox = document.getElementById('wish-box');
-        
-        if (employeeDb[idInput]) {
-            errorMsg.style.display = 'none';
-            inputStage.style.display = 'none';
-            
-            // Set name and pull a random wish from the array
-            document.getElementById('user-name').innerText = `Theruwan Saranai, ${employeeDb[idInput]}!`;
-            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-            document.getElementById('wish-text').innerText = randomWish;
-            
-            wishBox.style.display = 'block';
-        } else {
-            errorMsg.style.display = 'block';
-        }
+    // Map each wish text to its corresponding image uploaded in your repo
+const wishes = [
+    {
+        text: "May your code compile flawlessly on the first run, your production pipelines stay emerald green, and your life be filled with serene peace! 🪔✨",
+        image: "wish1.jpg" // The exact file name you uploaded to GitHub
+    },
+    {
+        text: "Wishing you a bug-free life and an overflow of happiness. May this Vesak season clear your mind's cache and refresh your spirit! 🌸",
+        image: "wish2.jpg"
+    },
+    {
+        text: "May the light of Vesak illuminate your career path, resolve all merge conflicts in your life, and bring immense peace to you and your family! 🌾",
+        image: "wish3.jpg"
     }
+];
 
+function generateWish() {
+    const idInput = document.getElementById('empId').value.trim().toUpperCase();
+    const errorMsg = document.getElementById('error-msg');
+    const inputStage = document.getElementById('input-stage');
+    const wishBox = document.getElementById('wish-box');
+    
+    if (employeeDb[idInput]) {
+        errorMsg.style.display = 'none';
+        inputStage.style.display = 'none';
+        
+        // Set user name
+        document.getElementById('user-name').innerText = `Theruwan Saranai, ${employeeDb[idInput]}!`;
+        
+        // Pick a random wish object (text + image)
+        const randomWishObject = wishes[Math.floor(Math.random() * wishes.length)];
+        
+        // Inject text and image source
+        document.getElementById('wish-text').innerText = randomWishObject.text;
+        
+        const imgElement = document.getElementById('wish-img');
+        imgElement.src = randomWishObject.image;
+        imgElement.style.display = 'block'; // Make the image visible
+        
+        wishBox.style.display = 'block';
+    } else {
+        errorMsg.style.display = 'block';
+    }
+}
     function resetForm() {
         document.getElementById('empId').value = '';
         document.getElementById('input-stage').style.display = 'block';
