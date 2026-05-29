@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Department - Digital Vesak Dansala</title>
+    <title>IT Department - Digital Vesak Wishes</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -83,7 +83,7 @@
     <div id="wish-box" class="wish-box">
         <img id="wish-img" src="" alt="Vesak Blessing" class="wish-image">
         
-        <div class="greeting" id="user-name">Theruwan Saranai!</div>
+        <div class="greeting" id="user-name">තෙරුවන් සරණයි!</div>
         <div class="message" id="wish-text">...</div>
         <button onclick="resetForm()" style="margin-top: 20px; background: transparent; color: #94a3b8; border: 1px solid #334155;">Try Another ID</button>
     </div>
@@ -93,6 +93,9 @@
     // 1. Add your team data here (Keep keys UPPERCASE for easy matching)
     const employeeDb = {
         "24197": "Nadeeka",
+        "70454": "Imaya",
+        "70446": "Pasindu",
+        "70467": "Shenuka",
         "17798": "Thisura",
         "9712": "Jude",
         "24797": "Diwakara",
@@ -3555,16 +3558,26 @@
     // Map each wish text to its corresponding image uploaded in your repo
 const wishes = [
     {
-        text: "ඔබට සුභ වෙසක් මංගල්‍යයක් වේවා 🪔✨",
+        text: "වෙසක් පහනක ඇති සිසිල් ආලෝකය මෙන්, ඔබේ ජීවිතයත් ප්‍රඥාවෙන් සහ සතුටෙන් එකලු වන පින්බර වෙසක් මංගල්‍යයක් වේවා! 🪔✨",
         image: "wish4.jpg" // The exact file name you uploaded to GitHub
     },
     {
-        text: "Wishing you a bug-free life and an overflow of happiness. May this Vesak season clear your mind's cache and refresh your spirit! 🌸",
-        image: "wish2.jpg"
+        text: "ලොව්තුරු බුදු සමිඳුන්ගේ තෙමඟුල සිහි කරන මේ පින්බර වෙසක් පොහෝ දිනයේ, ඔබේ ජීවිතයද දහම් ආලෝකයෙන් එකලු වේවා!"<br> "පින්බර වෙසක් මංගල්‍යයක් වේවා! ✨",
+        image: "wish5.jpg"
     },
     {
-        text: "May the light of Vesak illuminate your career path, resolve all merge conflicts in your life, and bring immense peace to you and your family! 🌾",
-        image: "wish3.jpg"
+        text: "උතුම් වූ වෙසක් පොහෝ දිනය සැමට සිත් නිවන, සැනසීම උදා කරන, උත්තරීතර නිවන් සුව පිණිසම හේතු වන පින්බර දිනයක් වේවා! 🌸",
+        image: "wish6.jpg"
+    },
+    
+    {
+        text: "සිතේ නොසන්සුන්කම් නිවාලන, මෙත් සිතින් ලොවම සනසන, උතුම් බුදු ගුණ සෙවණේ ගතවන ශාන්ත වූ වෙසක් පොහෝ දිනයක් වේවා!",
+        image: "wish7.jpg"
+    },
+    
+    {
+        text: "ලොව්තුරු අමා සුවයෙන් සිත් සතන් සනසන, ප්‍රඥාවේ ආලෝකය දල්වන පින්බර වෙසක් මංගල්‍යයක් වේවා! 🌾",
+        image: "wish8.jpg"
     }
 ];
 
@@ -3579,7 +3592,7 @@ function generateWish() {
         inputStage.style.display = 'none';
         
         // Set user name
-        document.getElementById('user-name').innerText = `Theruwan Saranai, ${employeeDb[idInput]}!`;
+        document.getElementById('user-name').innerText = `තෙරුවන් සරණයි, ${employeeDb[idInput]}!`;
         
         // Pick a random wish object (text + image)
         const randomWishObject = wishes[Math.floor(Math.random() * wishes.length)];
